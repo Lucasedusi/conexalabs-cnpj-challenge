@@ -1,19 +1,21 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { shade } from 'polished';
 
-// interface formProps {
-//   hasError: boolean;
-// }
+interface formProps {
+  hasError?: boolean;
+}
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+export const Title = styled.h1`
+  font-size: 45px;
+  color: #3a3a3a;
+  max-width: 450px;
+  line-height: 56px;
+  margin-top: 80px;
 `;
 
-export const Form = styled.form`
-  margin-top: 60px;
+export const Form = styled.form<formProps>`
+  margin-top: 40px;
+  max-width: 700px;
   display: flex;
   input {
     flex: 1;
@@ -21,18 +23,26 @@ export const Form = styled.form`
     color: #292929;
     font-size: 20px;
     height: 70px;
-    width: 650px;
     padding: 0 24px;
     border: 0;
     border-radius: 5px 0 0 5px;
     border: 1px solid #fff;
     border-right: 0;
+    ${(props) =>
+      props.hasError &&
+      css`
+        border-color: #c53030;
+      `}
+    &::placeholder {
+      color: #a8a8b3;
+      font-weight: normal;
+    }
   }
-
   button {
-    width: 350px;
+    width: 210px;
     height: 70px;
     font-size: 20px;
+    padding: 5px;
     background: linear-gradient(135deg, #41c9a6 0%, #008eff 100%);
     border-radius: 0 5px 5px 0;
     border: 0;
@@ -50,7 +60,7 @@ export const Error = styled.span`
 
 export const Repositories = styled.div`
   margin-top: 80px;
-  max-width: 70px;
+  max-width: 700px;
   a {
     background: #fff;
     border-radius: 5px;
