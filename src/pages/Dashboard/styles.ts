@@ -74,10 +74,20 @@ export const Form = styled.form<formProps>`
 
 export const Body = styled.div`
   background: linear-gradient(135deg, ${colors.gradientPrimary} 0%, ${colors.gradientSecondary} 100%);
-  padding: 100px 130px  159px 130px;
+  padding: 100px 130px 150px 130px;
+  height: 494px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 52px;
+  grid-gap: 42px;
+
+  a {
+    text-decoration: none;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: translateY(10px);
+    } 
+  }
 `;
 
 export const CardInformation = styled.div`
@@ -92,6 +102,7 @@ export const CardInformation = styled.div`
     color: ${colors.textCard};
     font-weight: 600;
     margin-bottom: 4px;
+    text-transform: capitalize;
   }
 
   span {
