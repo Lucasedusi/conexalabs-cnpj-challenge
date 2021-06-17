@@ -8,7 +8,7 @@ interface formProps {
 }
 
 export const Container = styled.div`
-  padding: 40px 0;
+  /* padding: 40px 0; */
 `;
 
 export const Header = styled.div`
@@ -16,6 +16,7 @@ export const Header = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 40px;
 `;
 
 export const Title = styled.div`
@@ -73,7 +74,7 @@ export const Form = styled.form<formProps>`
 
 export const Body = styled.div`
   background: linear-gradient(135deg, ${colors.gradientPrimary} 0%, ${colors.gradientSecondary} 100%);
-  padding: 100px 130px;
+  padding: 100px 130px  159px 130px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 52px;
@@ -81,25 +82,39 @@ export const Body = styled.div`
 
 export const CardInformation = styled.div`
   display: flex;
-  padding: 16px;
+  flex-direction: column;
+  padding: 22px 20px;
   background: #fff;
   border-radius: 10px;
-`;
-
-export const InfoRazaoSocial = styled.div`
-  display: flex;
-  flex-direction: column;
 
   p {
     font-size: 16px;
-    color: ${colors.primary};
+    color: ${colors.textCard};
     font-weight: 600;
     margin-bottom: 4px;
   }
 
   span {
     font-size: 15px;
-    color: ${colors.primary};
+    color: ${colors.textCard};
     font-weight: 400;
   }
+`;
+
+export const InfoRazaoSocial = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 26px;
+`;
+
+export const InfoCNPJ = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 26px;
+`;
+
+export const InfoEndereco = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
 `;

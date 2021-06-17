@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { FaBuilding } from 'react-icons/fa';
-import { Container, Header, Title, Form, Body, CardInformation, InfoRazaoSocial } from './styles';
+import { Container, Header, Title, Form, Body, CardInformation, InfoRazaoSocial, InfoCNPJ, InfoEndereco } from './styles';
 
 const Dashboard: React.FC = () => {
   return (
@@ -23,16 +23,58 @@ const Dashboard: React.FC = () => {
               <p>Conexa Hub de Inovação</p>
               <span>Razão Social</span>
             </InfoRazaoSocial>
+            <InfoCNPJ>
+              <p>342.454.0001/76</p>
+              <span>CNPJ</span>
+            </InfoCNPJ>
+            <InfoEndereco>
+              <p>Av. Brasil 1982, Centro - GO</p>
+              <span>Endereço</span>
+            </InfoEndereco>
           </CardInformation>
           <CardInformation>
-            <p>Card 2</p>
+            <InfoRazaoSocial>
+              <p>Conexa Hub de Inovação</p>
+              <span>Razão Social</span>
+            </InfoRazaoSocial>
+            <InfoCNPJ>
+              <p>342.454.0001/76</p>
+              <span>CNPJ</span>
+            </InfoCNPJ>
+            <InfoEndereco>
+              <p>Av. Brasil 1982, Centro - GO</p>
+              <span>Endereço</span>
+            </InfoEndereco>
           </CardInformation>
           <CardInformation>
-            <p>Card 1</p>
+            <InfoRazaoSocial>
+              <p>Conexa Hub de Inovação</p>
+              <span>Razão Social</span>
+            </InfoRazaoSocial>
+            <InfoCNPJ>
+              <p>342.454.0001/76</p>
+              <span>CNPJ</span>
+            </InfoCNPJ>
+            <InfoEndereco>
+              <p>Av. Brasil 1982, Centro - GO</p>
+              <span>Endereço</span>
+            </InfoEndereco>
           </CardInformation>
           <CardInformation>
-            <p>Card 1</p>
+            <InfoRazaoSocial>
+              <p>Conexa Hub de Inovação</p>
+              <span>Razão Social</span>
+            </InfoRazaoSocial>
+            <InfoCNPJ>
+              <p>342.454.0001/76</p>
+              <span>CNPJ</span>
+            </InfoCNPJ>
+            <InfoEndereco>
+              <p>Av. Brasil 1982, Centro - GO</p>
+              <span>Endereço</span>
+            </InfoEndereco>
           </CardInformation>
+          
         </Body>
       </Container>
     </>
