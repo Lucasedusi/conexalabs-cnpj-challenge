@@ -1,6 +1,6 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
-import gitBackground from "../assets/git-background.svg";
+import colors from './colors';
 
 export default createGlobalStyle`
   * {
@@ -11,7 +11,7 @@ export default createGlobalStyle`
   }
 
   body {
-    background: #f0f0f5;
+    background: ${colors.background};
   }
 
   body, input, button {
@@ -19,9 +19,7 @@ export default createGlobalStyle`
   }
 
   #root {
-    max-width: 960px;
     margin: 0 auto;
-    padding: 40px 20px;
   }
 
   button {

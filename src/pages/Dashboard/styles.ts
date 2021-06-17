@@ -1,103 +1,105 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { shade } from 'polished';
+
+import colors from '../../styles/colors';
 
 interface formProps {
   hasError?: boolean;
 }
 
-export const Title = styled.h1`
-  font-size: 45px;
-  color: #3a3a3a;
-  max-width: 450px;
-  line-height: 56px;
-  margin-top: 80px;
+export const Container = styled.div`
+  padding: 40px 0;
+`;
+
+export const Header = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+export const Title = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-size: 60px;
+    font-family: 'Roboto';
+    margin-left: 22px;
+    font-weight: 400;
+    color: ${colors.primary};
+  }
 `;
 
 export const Form = styled.form<formProps>`
+  display: flex;
   margin-top: 40px;
   max-width: 700px;
-  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+
   input {
     flex: 1;
-    font-weight: 600;
+    width: 375px;
+    font-weight: 500;
     color: #292929;
     font-size: 20px;
-    height: 70px;
+    height: 65px;
     padding: 0 24px;
-    border: 0;
-    border-radius: 5px 0 0 5px;
-    border: 1px solid #fff;
-    border-right: 0;
-    ${(props) =>
-      props.hasError &&
-      css`
-        border-color: #c53030;
-      `}
-    &::placeholder {
-      color: #a8a8b3;
-      font-weight: normal;
-    }
-  }
-  button {
-    width: 210px;
-    height: 70px;
-    font-size: 20px;
-    padding: 5px;
-    background: linear-gradient(135deg, #41c9a6 0%, #008eff 100%);
-    border-radius: 0 5px 5px 0;
-    border: 0;
-    color: #fff;
-    font-weight: bold;
-    transition: all, 0.6s;
-  }
-`;
-
-export const Error = styled.span`
-  display: block;
-  color: #c53030;
-  margin-top: 20px;
-`;
-
-export const Repositories = styled.div`
-  margin-top: 80px;
-  max-width: 700px;
-  a {
-    background: #fff;
     border-radius: 5px;
-    width: 100%;
-    padding: 20px;
-    display: block;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    transition: transform 0.2s;
+    border: 2px solid ${colors.primary};
+  }
+
+  button {
+    margin-left: 20px;
+    height: 50px;
+    font-size: 20px;
+    padding: 8px 32px;
+    background-color: ${colors.primary};
+    border-radius: 30px;
+    color: #fff;
+    font-weight: 500;
+    border: 0;
+    transition: background, 0.6s;
+
     &:hover {
-      transform: translateX(10px);
+      background: ${shade(0.2, '#3a8970')};
     }
-    & + a {
-      margin-top: 16px;
-    }
-    img {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-    }
-    div {
-      margin: 0 16px;
-      flex: 1;
-      strong {
-        font-size: 18px;
-        color: #3d3d4d;
-      }
-      p {
-        font-size: 16px;
-        color: #a8a8b3;
-        margin-top: 4px;
-      }
-    }
-    svg {
-      margin-left: auto;
-      color: #cbcbd6;
-    }
+  }
+`;
+
+export const Body = styled.div`
+  background: linear-gradient(135deg, ${colors.gradientPrimary} 0%, ${colors.gradientSecondary} 100%);
+  padding: 100px 130px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 52px;
+`;
+
+export const CardInformation = styled.div`
+  display: flex;
+  padding: 16px;
+  background: #fff;
+  border-radius: 10px;
+`;
+
+export const InfoRazaoSocial = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  p {
+    font-size: 16px;
+    color: ${colors.primary};
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  span {
+    font-size: 15px;
+    color: ${colors.primary};
+    font-weight: 400;
   }
 `;
