@@ -1,6 +1,8 @@
 import React, { useState, FormEvent } from 'react';
 
 import api from '../../services/api';
+import Lottie from 'react-lottie';
+import failedAnimation from '../../assets/failedAnimation.json';
 
 import { FaBuilding, FaChevronRight } from 'react-icons/fa';
 import {
@@ -14,6 +16,7 @@ import {
   InfoCNPJ,
   InfoEndereco,
   Footer,
+  Error,
 } from './styles';
 import { Link } from 'react-router-dom';
 
@@ -28,20 +31,39 @@ interface CnpjProps {
 
 const Dashboard: React.FC = () => {
   const [newCnpj, setNewCnpj] = useState('');
+  const [inputError, setInputError] = useState('');
   const [searchCnpj, setSearchCnpj] = useState<CnpjProps[]>([]);
 
   async function handleSearchCnpj(event: FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault();
 
-    const response = await api.get<CnpjProps>(`v1/cnpj/${newCnpj}`);
+    if (!newCnpj) {
+      setInputError('Digite um CNPJ');
+      return;
+    }
 
-    const findCnpj = response.data;
+    try {
+      const response = await api.get<CnpjProps>(`v1/cnpj/${newCnpj}`);
 
-    setSearchCnpj([...searchCnpj, findCnpj]);
-    setNewCnpj('');
+      const findCnpj = response.data;
 
-    console.log(response.data);
+      setSearchCnpj([...searchCnpj, findCnpj]);
+      setNewCnpj('');
+      setInputError('');
+    } catch (err) {
+      setInputError('CNPJ Inválido');
+      setNewCnpj('');
+    }
   }
+
+  const cnpjAnimation = {
+    loop: 1,
+    autoplay: true,
+    animationData: failedAnimation,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
 
   return (
     <>
@@ -51,18 +73,25 @@ const Dashboard: React.FC = () => {
             <FaBuilding size={50} color="#3a8970" />
             <h1>Localizador de Empresas</h1>
           </Title>
-          <Form onSubmit={handleSearchCnpj}>
+          <Form hasError={!!inputError} onSubmit={handleSearchCnpj}>
             <input value={newCnpj} onChange={(e) => setNewCnpj(e.target.value)} placeholder="CNPJ..." />
             <button type="submit">LOCALIZAR</button>
           </Form>
+          {inputError && (
+            <Error>
+              <Lottie width={26} height={26} options={cnpjAnimation} />
+              {inputError}
+            </Error>
+          )}
         </Header>
+
         <Body>
           {searchCnpj.map((item) => (
             <>
               <Link to="/" key={item.cnpj}>
                 <CardInformation>
                   <InfoRazaoSocial>
-                    <p>{item.fantasia.toLowerCase()}</p>
+                    <p>{item.fantasia}</p>
                     <span>Razão Social</span>
                   </InfoRazaoSocial>
                   <InfoCNPJ>
@@ -70,7 +99,7 @@ const Dashboard: React.FC = () => {
                     <span>CNPJ</span>
                   </InfoCNPJ>
                   <InfoEndereco>
-                    <p>{`${item.logradouro.toLowerCase()}, ${item.bairro.toLowerCase()} - ${item.municipio.toLowerCase()}, ${item.uf}`}</p>
+                    <p>{`${item.logradouro}, ${item.bairro} - ${item.municipio}, ${item.uf}`}</p>
                     <span>Endereço</span>
                   </InfoEndereco>
                   <Footer>

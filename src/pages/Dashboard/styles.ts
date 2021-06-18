@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { shade } from 'polished';
 
 import colors from '../../styles/colors';
@@ -40,7 +40,7 @@ export const Form = styled.form<formProps>`
   max-width: 700px;
   justify-content: center;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 
   input {
     flex: 1;
@@ -52,6 +52,12 @@ export const Form = styled.form<formProps>`
     padding: 0 24px;
     border-radius: 5px;
     border: 2px solid ${colors.primary};
+
+    ${(props) =>
+      props.hasError &&
+      css`
+        border-color: ${colors.error};
+      `}
   }
 
   button {
@@ -70,6 +76,16 @@ export const Form = styled.form<formProps>`
       background: ${shade(0.2, '#3a8970')};
     }
   }
+`;
+
+export const Error = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${colors.error};
+  margin-bottom: 20px;
+  padding: 8px 12px;
+  border-radius: 4px;
 `;
 
 export const Body = styled.div`
