@@ -86,7 +86,7 @@ export const Body = styled.div`
 
     &:hover {
       transform: translateY(10px);
-    } 
+    }
   }
 `;
 
@@ -128,4 +128,10 @@ export const InfoEndereco = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
+`;
+
+export const Footer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  color: #3c8d7c;
 `;

@@ -2,7 +2,7 @@ import React, { useState, FormEvent } from 'react';
 
 import api from '../../services/api';
 
-import { FaBuilding } from 'react-icons/fa';
+import { FaBuilding, FaChevronRight } from 'react-icons/fa';
 import {
   Container,
   Header,
@@ -13,6 +13,7 @@ import {
   InfoRazaoSocial,
   InfoCNPJ,
   InfoEndereco,
+  Footer,
 } from './styles';
 import { Link } from 'react-router-dom';
 
@@ -61,7 +62,7 @@ const Dashboard: React.FC = () => {
               <Link to="/" key={item.cnpj}>
                 <CardInformation>
                   <InfoRazaoSocial>
-                    <p>{item.fantasia}</p>
+                    <p>{item.fantasia.toLowerCase()}</p>
                     <span>Razão Social</span>
                   </InfoRazaoSocial>
                   <InfoCNPJ>
@@ -69,9 +70,12 @@ const Dashboard: React.FC = () => {
                     <span>CNPJ</span>
                   </InfoCNPJ>
                   <InfoEndereco>
-                    <p>{`${item.logradouro}, ${item.bairro} - ${item.municipio}, ${item.uf}`}</p>
+                    <p>{`${item.logradouro.toLowerCase()}, ${item.bairro.toLowerCase()} - ${item.municipio.toLowerCase()}, ${item.uf}`}</p>
                     <span>Endereço</span>
                   </InfoEndereco>
+                  <Footer>
+                    <FaChevronRight size={18} />
+                  </Footer>
                 </CardInformation>
               </Link>
             </>
