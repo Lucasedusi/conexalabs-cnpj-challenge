@@ -2,6 +2,7 @@
 import React, { useState, FormEvent, useEffect } from 'react';
 
 import api from '../../services/api';
+
 import Lottie from 'react-lottie';
 import failedAnimation from '../../assets/failedAnimation.json';
 import CpfCnpj from '@react-br-forms/cpf-cnpj-mask';
@@ -60,7 +61,7 @@ const Dashboard: React.FC = () => {
     }
 
     if (newCnpj.length !== 18) {
-      setInputError('Faltando Números aí');
+      setInputError('Está Faltando Números aí 😁');
       return;
     }
 

@@ -83,6 +83,8 @@ export const Error = styled.span`
   justify-content: center;
   align-items: center;
   color: ${colors.error};
+  font-size: 18px;
+  font-weight: 500;
   margin-bottom: 20px;
   padding: 8px 12px;
   border-radius: 4px;
