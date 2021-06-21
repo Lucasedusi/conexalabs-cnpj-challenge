@@ -1,8 +1,10 @@
-import React, { useState, FormEvent } from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useState, FormEvent, useEffect } from 'react';
 
 import api from '../../services/api';
 import Lottie from 'react-lottie';
 import failedAnimation from '../../assets/failedAnimation.json';
+import CpfCnpj from '@react-br-forms/cpf-cnpj-mask';
 
 import { FaBuilding, FaChevronRight } from 'react-icons/fa';
 import {
@@ -27,12 +29,27 @@ interface CnpjProps {
   bairro: string;
   municipio: string;
   uf: string;
+  message: string;
+  status: string;
 }
 
 const Dashboard: React.FC = () => {
   const [newCnpj, setNewCnpj] = useState('');
   const [inputError, setInputError] = useState('');
-  const [searchCnpj, setSearchCnpj] = useState<CnpjProps[]>([]);
+  const [mask, setMask] = useState('');
+  const [searchCnpj, setSearchCnpj] = useState<CnpjProps[]>(() => {
+    const storageCNPJ = localStorage.getItem('@Conexa:cnpj');
+
+    if (storageCNPJ) {
+      return JSON.parse(storageCNPJ);
+    }
+
+    return [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('@Conexa:cnpj', JSON.stringify(searchCnpj));
+  }, [searchCnpj]);
 
   async function handleSearchCnpj(event: FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault();
@@ -42,10 +59,20 @@ const Dashboard: React.FC = () => {
       return;
     }
 
+    if (newCnpj.length !== 18) {
+      setInputError('Faltando Números aí');
+      return;
+    }
+
     try {
-      const response = await api.get<CnpjProps>(`v1/cnpj/${newCnpj}`);
+      const response = await api.get<CnpjProps>(`v1/cnpj/${newCnpj.replace(/\D+/g, '')}`);
 
       const findCnpj = response.data;
+
+      if (response.data.status === 'ERROR') {
+        setInputError(response.data.message);
+        return;
+      }
 
       setSearchCnpj([...searchCnpj, findCnpj]);
       setNewCnpj('');
@@ -74,7 +101,13 @@ const Dashboard: React.FC = () => {
             <h1>Localizador de Empresas</h1>
           </Title>
           <Form hasError={!!inputError} onSubmit={handleSearchCnpj}>
-            <input value={newCnpj} onChange={(e) => setNewCnpj(e.target.value)} placeholder="CNPJ..." />
+            <CpfCnpj
+              value={newCnpj}
+              onChange={(e: { target: { value: React.SetStateAction<string> } }, type: string) => {
+                setNewCnpj(e.target.value);
+                setMask((type = 'CPF'));
+              }}
+            />
             <button type="submit">LOCALIZAR</button>
           </Form>
           {inputError && (
