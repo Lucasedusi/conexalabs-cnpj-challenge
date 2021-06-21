@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { shade } from 'polished';
 
 import colors from '../../styles/colors';
@@ -40,7 +40,7 @@ export const Form = styled.form<formProps>`
   max-width: 700px;
   justify-content: center;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 
   input {
     flex: 1;
@@ -52,6 +52,12 @@ export const Form = styled.form<formProps>`
     padding: 0 24px;
     border-radius: 5px;
     border: 2px solid ${colors.primary};
+
+    ${(props) =>
+      props.hasError &&
+      css`
+        border-color: ${colors.error};
+      `}
   }
 
   button {
@@ -72,6 +78,18 @@ export const Form = styled.form<formProps>`
   }
 `;
 
+export const Error = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${colors.error};
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  padding: 8px 12px;
+  border-radius: 4px;
+`;
+
 export const Body = styled.div`
   background: linear-gradient(135deg, ${colors.gradientPrimary} 0%, ${colors.gradientSecondary} 100%);
   padding: 100px 130px 150px 130px;
@@ -86,7 +104,7 @@ export const Body = styled.div`
 
     &:hover {
       transform: translateY(10px);
-    } 
+    }
   }
 `;
 
@@ -128,4 +146,10 @@ export const InfoEndereco = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
+`;
+
+export const Footer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  color: #3c8d7c;
 `;
