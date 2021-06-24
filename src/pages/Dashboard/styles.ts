@@ -94,16 +94,13 @@ export const Body = styled.div`
   background: linear-gradient(135deg, ${colors.gradientPrimary} 0%, ${colors.gradientSecondary} 100%);
   padding: 100px 130px 150px 130px;
   height: 494px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 42px;
 
   a {
     text-decoration: none;
     transition: transform 0.2s;
 
     &:hover {
-      transform: translateY(10px);
+      transform: translateX(10px);
     }
   }
 `;
@@ -114,6 +111,11 @@ export const CardInformation = styled.div`
   padding: 22px 20px;
   background: #fff;
   border-radius: 10px;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(10px);
+  }
 
   p {
     font-size: 16px;
