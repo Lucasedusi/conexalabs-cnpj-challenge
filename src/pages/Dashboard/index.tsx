@@ -7,6 +7,9 @@ import Lottie from 'react-lottie';
 import failedAnimation from '../../assets/failedAnimation.json';
 import CpfCnpj from '@react-br-forms/cpf-cnpj-mask';
 
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+
 import { FaBuilding, FaChevronRight } from 'react-icons/fa';
 import {
   Container,
@@ -93,6 +96,24 @@ const Dashboard: React.FC = () => {
     },
   };
 
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+      slidesToSlide: 3, // optional, default to 1.
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 2, // optional, default to 1.
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1, // optional, default to 1.
+    },
+  };
+
   return (
     <>
       <Container>
@@ -120,29 +141,31 @@ const Dashboard: React.FC = () => {
         </Header>
 
         <Body>
-          {searchCnpj.map((item) => (
-            <>
-              <Link to="/" key={item.cnpj}>
-                <CardInformation>
-                  <InfoRazaoSocial>
-                    <p>{item.fantasia}</p>
-                    <span>Razão Social</span>
-                  </InfoRazaoSocial>
-                  <InfoCNPJ>
-                    <p>{item.cnpj}</p>
-                    <span>CNPJ</span>
-                  </InfoCNPJ>
-                  <InfoEndereco>
-                    <p>{`${item.logradouro}, ${item.bairro} - ${item.municipio}, ${item.uf}`}</p>
-                    <span>Endereço</span>
-                  </InfoEndereco>
-                  <Footer>
-                    <FaChevronRight size={18} />
-                  </Footer>
-                </CardInformation>
-              </Link>
-            </>
-          ))}
+          <Carousel responsive={responsive}>
+            {searchCnpj.map((item) => (
+              <>
+                <Link to="/" key={item.cnpj}>
+                  <CardInformation>
+                    <InfoRazaoSocial>
+                      <p>{item.fantasia}</p>
+                      <span>Razão Social</span>
+                    </InfoRazaoSocial>
+                    <InfoCNPJ>
+                      <p>{item.cnpj}</p>
+                      <span>CNPJ</span>
+                    </InfoCNPJ>
+                    <InfoEndereco>
+                      <p>{`${item.logradouro}, ${item.bairro} - ${item.municipio}, ${item.uf}`}</p>
+                      <span>Endereço</span>
+                    </InfoEndereco>
+                    <Footer>
+                      <FaChevronRight size={18} />
+                    </Footer>
+                  </CardInformation>
+                </Link>
+              </>
+            ))}
+          </Carousel>
         </Body>
       </Container>
     </>
