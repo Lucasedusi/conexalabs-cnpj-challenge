@@ -2,6 +2,7 @@
 import React, { useState, FormEvent, useEffect } from 'react';
 
 import api from '../../services/api';
+import { ICompany } from '../../interface/company';
 
 import Lottie from 'react-lottie';
 import failedAnimation from '../../assets/failedAnimation.json';
@@ -27,21 +28,14 @@ import {
 import { Link } from 'react-router-dom';
 
 interface CnpjProps {
-  fantasia: string;
-  cnpj: string;
-  logradouro: string;
-  bairro: string;
-  municipio: string;
-  uf: string;
-  message: string;
-  status: string;
+  dataOfCompany: (company: ICompany) => void;
 }
 
-const Dashboard: React.FC = () => {
+export function Dashboard({ dataOfCompany }: CnpjProps) {
   const [newCnpj, setNewCnpj] = useState('');
   const [inputError, setInputError] = useState('');
   const [mask, setMask] = useState('');
-  const [searchCnpj, setSearchCnpj] = useState<CnpjProps[]>(() => {
+  const [searchCnpj, setSearchCnpj] = useState<ICompany[]>(() => {
     const storageCNPJ = localStorage.getItem('@Conexa:cnpj');
 
     if (storageCNPJ) {
@@ -64,12 +58,12 @@ const Dashboard: React.FC = () => {
     }
 
     if (newCnpj.length !== 18) {
-      setInputError('Está Faltando Números aí 😁');
+      setInputError('Está Faltando Números aí 😬');
       return;
     }
 
     try {
-      const response = await api.get<CnpjProps>(`v1/cnpj/${newCnpj.replace(/\D+/g, '')}`);
+      const response = await api.get<ICompany>(`v1/cnpj/${newCnpj.replace(/\D+/g, '')}`);
 
       const findCnpj = response.data;
 
@@ -87,6 +81,10 @@ const Dashboard: React.FC = () => {
     }
   }
 
+  const handleClickAddress = (company: ICompany) => {
+    dataOfCompany(company);
+  };
+
   const cnpjAnimation = {
     loop: 1,
     autoplay: true,
@@ -99,18 +97,18 @@ const Dashboard: React.FC = () => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-      slidesToSlide: 3, // optional, default to 1.
+      items: 4,
+      slidesToSlide: 3,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
       items: 2,
-      slidesToSlide: 2, // optional, default to 1.
+      slidesToSlide: 2,
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
       items: 1,
-      slidesToSlide: 1, // optional, default to 1.
+      slidesToSlide: 1,
     },
   };
 
@@ -144,7 +142,7 @@ const Dashboard: React.FC = () => {
           <Carousel responsive={responsive}>
             {searchCnpj.map((item) => (
               <>
-                <Link to="/" key={item.cnpj}>
+                <Link to="/address" key={item.cnpj} onClick={() => handleClickAddress(item)}>
                   <CardInformation>
                     <InfoRazaoSocial>
                       <p>{item.fantasia}</p>
@@ -170,6 +168,6 @@ const Dashboard: React.FC = () => {
       </Container>
     </>
   );
-};
+}
 
 export default Dashboard;
