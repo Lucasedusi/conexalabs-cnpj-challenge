@@ -31,7 +31,7 @@ interface CnpjProps {
   dataOfCompany: (company: ICompany) => void;
 }
 
-export function Dashboard({ dataOfCompany }: CnpjProps) {
+function Dashboard({ dataOfCompany }: CnpjProps) {
   const [newCnpj, setNewCnpj] = useState('');
   const [inputError, setInputError] = useState('');
   const [mask, setMask] = useState('');
