@@ -113,6 +113,8 @@ export const CardInformation = styled.div`
   border-radius: 10px;
   transition: transform 0.2s;
   margin: 10px;
+  height: 315px;
+  justify-content: space-between;
 
   &:hover {
     transform: translateY(5px);

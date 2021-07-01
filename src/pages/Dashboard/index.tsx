@@ -133,6 +133,7 @@ function Dashboard({ dataOfCompany }: CnpjProps) {
           </Title>
           <Form hasError={!!inputError} onSubmit={handleSearchCnpj}>
             <CpfCnpj
+              placeholder="CNPJ..."
               value={newCnpj}
               onChange={(e: { target: { value: React.SetStateAction<string> } }, type: string) => {
                 setNewCnpj(e.target.value);
