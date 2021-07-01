@@ -68,7 +68,7 @@ function Address({ company }: MapProps) {
           <Container>
             <CardInformation>
               <Link to="/">
-                <FaArrowLeft style={{ border: '1px solid #3a8970', borderRadius: '50%', padding: 3 }} color='#3a8970' size={28} />
+                <FaArrowLeft style={{ border: '1px solid #3a8970', borderRadius: '50%', padding: 5 }} color='#3a8970' size={30} />
               </Link>
               <InfoRazaoSocial>
                 <p>{company.fantasia}</p>
