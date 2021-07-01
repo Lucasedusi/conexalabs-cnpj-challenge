@@ -93,7 +93,7 @@ export const Error = styled.span`
 export const Body = styled.div`
   background: linear-gradient(135deg, ${colors.gradientPrimary} 0%, ${colors.gradientSecondary} 100%);
   padding: 100px 130px 150px 130px;
-  height: 494px;
+  height: 499px;
 
   a {
     text-decoration: none;
@@ -112,9 +112,10 @@ export const CardInformation = styled.div`
   background: #fff;
   border-radius: 10px;
   transition: transform 0.2s;
+  margin: 10px;
 
   &:hover {
-    transform: translateY(10px);
+    transform: translateY(5px);
   }
 
   p {
@@ -154,4 +155,18 @@ export const Footer = styled.div`
   display: flex;
   justify-content: flex-end;
   color: #3c8d7c;
+`;
+
+export const Empty = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  span {
+    margin-top: 10px;
+    font-weight: 300;
+    font-size: 22px;
+    color: ${colors.textPrimary};
+  }
 `;

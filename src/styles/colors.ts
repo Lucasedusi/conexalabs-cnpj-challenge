@@ -7,6 +7,7 @@ export default {
   gradientSecondary: '#459a9e',
 
   textCard: '#459a9e',
+  textPrimary: '#f7f7f7',
 
   error: '#c53030',
 };

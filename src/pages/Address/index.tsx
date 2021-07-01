@@ -7,9 +7,9 @@ import { ICompany } from '../../interface/company';
 
 import Spinner from '../../components/Spinner';
 
-import { FaMapMarkerAlt, FaArrowAltCircleLeft } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaArrowLeft } from 'react-icons/fa';
 
-import { Container, ContainerCard } from './styles';
+import { Container, CardInformation, InfoRazaoSocial, InfoCNPJ, InfoEndereco } from './styles';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -29,12 +29,12 @@ function Address({ company }: MapProps) {
   });
 
   useEffect(() => {
-    (async function getEndereco() {
+    (async function getAddress() {
       setLoader(true);
       await localization
         .get('/json', {
           params: {
-            address: companyMap.endereco + companyMap.fantasia,
+            address: companyMap.logradouro + companyMap.fantasia + companyMap.municipio,
             key: 'AIzaSyDdI14A2M5QynOpuYJm_qygWiqI4YlwwC4',
           },
         })
@@ -66,17 +66,23 @@ function Address({ company }: MapProps) {
           zoom={[18]}
         >
           <Container>
-            <ContainerCard>
+            <CardInformation>
               <Link to="/">
-                <FaArrowAltCircleLeft />
+                <FaArrowLeft style={{ border: '1px solid #3a8970', borderRadius: '50%', padding: 3 }} color='#3a8970' size={28} />
               </Link>
-              <h5>{company.fantasia}</h5>
-              <h6>Razão Social</h6>
-              <h5>{company.cnpj}</h5>
-              <h6>CNPJ</h6>
-              <h5>{`${company.logradouro}, ${company.bairro} - ${company.municipio}, ${company.uf}`}</h5>
-              <h6>Endereço</h6>
-            </ContainerCard>
+              <InfoRazaoSocial>
+                <p>{company.fantasia}</p>
+                <span>Razão Social</span>
+              </InfoRazaoSocial>
+              <InfoCNPJ>
+                <p>{company.cnpj}</p>
+                <span>CNPJ</span>
+              </InfoCNPJ>
+              <InfoEndereco>
+                <p>{`${company.logradouro}, ${company.bairro} - ${company.municipio}, ${company.uf}`}</p>
+                <span>Endereço</span>
+              </InfoEndereco>
+            </CardInformation>
           </Container>
           <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}></Layer>
           <Marker style={{ fontSize: 32, color: '#f00' }} coordinates={[lng, lat]}>

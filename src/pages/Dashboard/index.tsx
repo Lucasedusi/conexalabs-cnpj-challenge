@@ -5,7 +5,8 @@ import api from '../../services/api';
 import { ICompany } from '../../interface/company';
 
 import Lottie from 'react-lottie';
-import failedAnimation from '../../assets/failedAnimation.json';
+import failedAnimation from '../../assets/Lotties/failedAnimation.json';
+import searchFile from '../../assets/Lotties/searchFile.json';
 import CpfCnpj from '@react-br-forms/cpf-cnpj-mask';
 
 import Carousel from 'react-multi-carousel';
@@ -23,6 +24,7 @@ import {
   InfoCNPJ,
   InfoEndereco,
   Footer,
+  Empty,
   Error,
 } from './styles';
 import { Link } from 'react-router-dom';
@@ -94,6 +96,15 @@ function Dashboard({ dataOfCompany }: CnpjProps) {
     },
   };
 
+  const findFile = {
+    loop: true,
+    autoplay: true,
+    animationData: searchFile,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
+
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -139,31 +150,38 @@ function Dashboard({ dataOfCompany }: CnpjProps) {
         </Header>
 
         <Body>
-          <Carousel responsive={responsive}>
-            {searchCnpj.map((item) => (
-              <>
-                <Link to="/address" key={item.cnpj} onClick={() => handleClickAddress(item)}>
-                  <CardInformation>
-                    <InfoRazaoSocial>
-                      <p>{item.fantasia}</p>
-                      <span>Razão Social</span>
-                    </InfoRazaoSocial>
-                    <InfoCNPJ>
-                      <p>{item.cnpj}</p>
-                      <span>CNPJ</span>
-                    </InfoCNPJ>
-                    <InfoEndereco>
-                      <p>{`${item.logradouro}, ${item.bairro} - ${item.municipio}, ${item.uf}`}</p>
-                      <span>Endereço</span>
-                    </InfoEndereco>
-                    <Footer>
-                      <FaChevronRight size={18} />
-                    </Footer>
-                  </CardInformation>
-                </Link>
-              </>
-            ))}
-          </Carousel>
+          {searchCnpj.length > 0 ? (
+            <Carousel responsive={responsive}>
+              {searchCnpj.map((item) => (
+                <>
+                  <Link to="/address" key={item.cnpj} onClick={() => handleClickAddress(item)}>
+                    <CardInformation>
+                      <InfoRazaoSocial>
+                        <p>{item.fantasia}</p>
+                        <span>Razão Social</span>
+                      </InfoRazaoSocial>
+                      <InfoCNPJ>
+                        <p>{item.cnpj}</p>
+                        <span>CNPJ</span>
+                      </InfoCNPJ>
+                      <InfoEndereco>
+                        <p>{`${item.logradouro}, ${item.bairro} - ${item.municipio}, ${item.uf}`}</p>
+                        <span>Endereço</span>
+                      </InfoEndereco>
+                      <Footer>
+                        <FaChevronRight size={18} />
+                      </Footer>
+                    </CardInformation>
+                  </Link>
+                </>
+              ))}
+            </Carousel>
+          ) : (
+            <Empty>
+              <Lottie width={175} height={175} options={findFile} />
+              <span>Localize acima a primeira empresa</span>
+            </Empty>
+          )}
         </Body>
       </Container>
     </>
