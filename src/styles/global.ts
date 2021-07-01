@@ -11,7 +11,12 @@ export default createGlobalStyle`
   }
 
   body {
-    background: ${colors.background};
+    background: linear-gradient(135deg, ${colors.gradientPrimary} 0%, ${colors.gradientSecondary} 100%);
+
+    @media (max-width: 767px) {
+    background:  ${colors.gradientPrimary};
+  
+  }
   }
 
   body, input, button {

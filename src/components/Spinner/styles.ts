@@ -9,7 +9,7 @@ export const Loading = styled.div`
 `;
 
 export const LoadingIcon = styled.div`
-  border: 8px solid rgba(0, 0, 0, 0.1);
+  border: 8px solid ${colors.background};
   border-left-color: ${colors.primary};
   height: 60px;
   width: 60px;

@@ -16,7 +16,8 @@ export const Header = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 40px;
+  padding-top: 40px;
+  background: ${colors.background};
 `;
 
 export const Title = styled.div`
@@ -31,6 +32,11 @@ export const Title = styled.div`
     margin-left: 22px;
     font-weight: 400;
     color: ${colors.primary};
+
+    @media (max-width: 767px) {
+      font-size: 25px;
+      margin-left: 12px;
+    }
   }
 `;
 
@@ -53,6 +59,12 @@ export const Form = styled.form<formProps>`
     border-radius: 5px;
     border: 2px solid ${colors.primary};
 
+    @media (max-width: 767px) {
+      font-size: 14px;
+      height: 45px;
+      width: 210px;
+    }
+
     ${(props) =>
       props.hasError &&
       css`
@@ -71,6 +83,12 @@ export const Form = styled.form<formProps>`
     font-weight: 500;
     border: 0;
     transition: background, 0.6s;
+
+    @media (max-width: 767px) {
+      font-size: 14px;
+      height: 45px;
+      padding: 5px 20px;
+    }
 
     &:hover {
       background: ${shade(0.2, '#3a8970')};
@@ -91,9 +109,14 @@ export const Error = styled.span`
 `;
 
 export const Body = styled.div`
-  background: linear-gradient(135deg, ${colors.gradientPrimary} 0%, ${colors.gradientSecondary} 100%);
-  padding: 100px 130px 150px 130px;
-  height: 499px;
+  padding: 100px 130px 189px 130px;
+
+  @media (max-width: 767px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px 12px;
+  }
 
   a {
     text-decoration: none;
@@ -165,10 +188,19 @@ export const Empty = styled.div`
   align-items: center;
   flex-direction: column;
 
+  /* @media (max-width: 767px) {
+    font-size: 25px;
+    margin-left: 12px;
+  } */
+
   span {
     margin-top: 10px;
     font-weight: 300;
     font-size: 22px;
     color: ${colors.textPrimary};
+
+    @media (max-width: 767px) {
+      font-size: 20px;
+    }
   }
 `;
