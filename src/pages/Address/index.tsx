@@ -1,15 +1,13 @@
 /* eslint-disable react/style-prop-object */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-unused-expressions */
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-
-import { ICompany } from '../../interface/company';
-import { FaMapMarkerAlt, FaArrowAltCircleLeft } from 'react-icons/fa';
-
 import ReactMapboxGl, { Layer, Marker } from 'react-mapbox-gl';
-import localizationApi from '../../services/localization';
+import localization from '../../services/localization';
+import { ICompany } from '../../interface/company';
+
 import Spinner from '../../components/Spinner';
+
+import { FaMapMarkerAlt, FaArrowAltCircleLeft } from 'react-icons/fa';
 
 import { Container, ContainerCard } from './styles';
 
@@ -23,36 +21,34 @@ function Address({ company }: MapProps) {
   const [companyMap] = useState<ICompany>(company);
   const [lat, setLat] = useState<number>(0);
   const [lng, setLng] = useState<number>(0);
-  const [loader, setLoader] = useState<boolean>();
+  const [loader, setLoader] = useState<boolean>(false);
   let history = useHistory();
 
   const Map = ReactMapboxGl({
-    accessToken: 'pk.eyJ1IjoibHVjYXNlZHVzaSIsImEiOiJja3E4Mm1sNHAwYzAyMndwbGR5bzhlYm9tIn0.wF_qyRjCNyXYkR5N2Cov3A',
+    accessToken: 'pk.eyJ1IjoibHVjYXNlZHVzaSIsImEiOiJja3Fqa3E0dTAwMW4xMnBsdnc5azV6Mm5jIn0.dZcBSzHCj_u3J3nzHoFo3g',
   });
 
   useEffect(() => {
-    if (companyMap?.cnpj === '') {
-      history.push('/');
-    } else {
-      (async function getAddress() {
-        setLoader(true);
-
-        await localizationApi
-          .get('/json', {
-            params: {
-              address: company.endereco + company.fantasia,
-              key: 'AIzaSyAtbTMD8L_-9Ilj9bciFSy_tP7B4hJiFVI',
-            },
-          })
-          .then((res) => {
-            setLat(res.data.results[0].geometry.location.lat);
-            setLng(res.data.results[0].geometry.location.lng);
-          })
-          .catch(() => {
-            alert('Falha ao buscar endereço');
-          });
-      });
-    }
+    (async function getEndereco() {
+      setLoader(true);
+      await localization
+        .get('/json', {
+          params: {
+            address: companyMap.endereco + companyMap.fantasia,
+            key: 'AIzaSyDdI14A2M5QynOpuYJm_qygWiqI4YlwwC4',
+          },
+        })
+        .then((res) => {
+          setLat(res.data.results[0].geometry.location.lat);
+          setLng(res.data.results[0].geometry.location.lng);
+        })
+        .catch(() => {
+          alert('Falha ao buscar endereço.');
+        })
+        .finally(() => {
+          setLoader(false);
+        });
+    })();
   }, [companyMap, history]);
 
   return (
@@ -65,7 +61,6 @@ function Address({ company }: MapProps) {
           containerStyle={{
             height: '100vh',
             width: '100vw',
-            zIndex: 0,
           }}
           center={[lng, lat]}
           zoom={[18]}
@@ -79,7 +74,7 @@ function Address({ company }: MapProps) {
               <h6>Razão Social</h6>
               <h5>{company.cnpj}</h5>
               <h6>CNPJ</h6>
-              <h5>{company.logradouro}</h5>
+              <h5>{`${company.logradouro}, ${company.bairro} - ${company.municipio}, ${company.uf}`}</h5>
               <h6>Endereço</h6>
             </ContainerCard>
           </Container>
