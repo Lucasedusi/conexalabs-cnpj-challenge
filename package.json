@@ -24,6 +24,7 @@
     "react-lottie": "^1.2.3",
     "react-mapbox-gl": "^5.1.1",
     "react-multi-carousel": "^2.6.3",
+    "react-responsive-carousel": "^3.2.19",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "sass": "^1.35.1",
