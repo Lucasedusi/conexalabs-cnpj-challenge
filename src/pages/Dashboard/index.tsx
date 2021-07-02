@@ -117,7 +117,7 @@ function Dashboard({ dataOfCompany }: CnpjProps) {
       slidesToSlide: 2,
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
+      breakpoint: { max: 767, min: 0 },
       items: 1,
       slidesToSlide: 1,
     },
@@ -125,65 +125,64 @@ function Dashboard({ dataOfCompany }: CnpjProps) {
 
   return (
     <>
-      <Container>
-        <Header>
-          <Title>
-            <FaBuilding size={50} color="#3a8970" />
-            <h1>Localizador de Empresas</h1>
-          </Title>
-          <Form hasError={!!inputError} onSubmit={handleSearchCnpj}>
-            <CpfCnpj
-              value={newCnpj}
-              onChange={(e: { target: { value: React.SetStateAction<string> } }, type: string) => {
-                setNewCnpj(e.target.value);
-                setMask((type = 'CPF'));
-              }}
-            />
-            <button type="submit">LOCALIZAR</button>
-          </Form>
-          {inputError && (
-            <Error>
-              <Lottie width={26} height={26} options={cnpjAnimation} />
-              {inputError}
-            </Error>
-          )}
-        </Header>
+      <Header>
+        <Title>
+          <FaBuilding size={50} color="#3a8970" />
+          <h1>Localizador de Empresas</h1>
+        </Title>
+        <Form hasError={!!inputError} onSubmit={handleSearchCnpj}>
+          <CpfCnpj
+            placeholder="CNPJ..."
+            value={newCnpj}
+            onChange={(e: { target: { value: React.SetStateAction<string> } }, type: string) => {
+              setNewCnpj(e.target.value);
+              setMask((type = 'CPF'));
+            }}
+          />
+          <button type="submit">LOCALIZAR</button>
+        </Form>
+        {inputError && (
+          <Error>
+            <Lottie width={26} height={26} options={cnpjAnimation} />
+            {inputError}
+          </Error>
+        )}
+      </Header>
 
-        <Body>
-          {searchCnpj.length > 0 ? (
-            <Carousel responsive={responsive}>
-              {searchCnpj.map((item) => (
-                <>
-                  <Link to="/address" key={item.cnpj} onClick={() => handleClickAddress(item)}>
-                    <CardInformation>
-                      <InfoRazaoSocial>
-                        <p>{item.fantasia}</p>
-                        <span>Razão Social</span>
-                      </InfoRazaoSocial>
-                      <InfoCNPJ>
-                        <p>{item.cnpj}</p>
-                        <span>CNPJ</span>
-                      </InfoCNPJ>
-                      <InfoEndereco>
-                        <p>{`${item.logradouro}, ${item.bairro} - ${item.municipio}, ${item.uf}`}</p>
-                        <span>Endereço</span>
-                      </InfoEndereco>
-                      <Footer>
-                        <FaChevronRight size={18} />
-                      </Footer>
-                    </CardInformation>
-                  </Link>
-                </>
-              ))}
-            </Carousel>
-          ) : (
-            <Empty>
-              <Lottie width={175} height={175} options={findFile} />
-              <span>Localize acima a primeira empresa</span>
-            </Empty>
-          )}
-        </Body>
-      </Container>
+      <Body>
+        {searchCnpj.length > 0 ? (
+          <Carousel responsive={responsive}>
+            {searchCnpj.map((item) => (
+              <>
+                <Link to="/address" key={item.cnpj} onClick={() => handleClickAddress(item)}>
+                  <CardInformation>
+                    <InfoRazaoSocial>
+                      <p>{item.fantasia}</p>
+                      <span>Razão Social</span>
+                    </InfoRazaoSocial>
+                    <InfoCNPJ>
+                      <p>{item.cnpj}</p>
+                      <span>CNPJ</span>
+                    </InfoCNPJ>
+                    <InfoEndereco>
+                      <p>{`${item.logradouro}, ${item.bairro} - ${item.municipio}, ${item.uf}`}</p>
+                      <span>Endereço</span>
+                    </InfoEndereco>
+                    <Footer>
+                      <FaChevronRight size={18} />
+                    </Footer>
+                  </CardInformation>
+                </Link>
+              </>
+            ))}
+          </Carousel>
+        ) : (
+          <Empty>
+            <Lottie width={175} height={175} options={findFile} />
+            <span>Localize acima a primeira empresa</span>
+          </Empty>
+        )}
+      </Body>
     </>
   );
 }

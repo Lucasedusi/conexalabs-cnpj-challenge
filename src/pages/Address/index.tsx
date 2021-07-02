@@ -5,6 +5,8 @@ import ReactMapboxGl, { Layer, Marker } from 'react-mapbox-gl';
 import localization from '../../services/localization';
 import { ICompany } from '../../interface/company';
 
+import swal from 'sweetalert';
+
 import Spinner from '../../components/Spinner';
 
 import { FaMapMarkerAlt, FaArrowLeft } from 'react-icons/fa';
@@ -43,7 +45,8 @@ function Address({ company }: MapProps) {
           setLng(res.data.results[0].geometry.location.lng);
         })
         .catch(() => {
-          alert('Falha ao buscar endereço.');
+          swal('Falha!', 'Endereço não encontrado!', 'error');
+          history.push('/');
         })
         .finally(() => {
           setLoader(false);
@@ -68,7 +71,11 @@ function Address({ company }: MapProps) {
           <Container>
             <CardInformation>
               <Link to="/">
-                <FaArrowLeft style={{ border: '1px solid #3a8970', borderRadius: '50%', padding: 3 }} color='#3a8970' size={28} />
+                <FaArrowLeft
+                  style={{ border: '1px solid #3a8970', borderRadius: '50%', padding: 5 }}
+                  color="#3a8970"
+                  size={30}
+                />
               </Link>
               <InfoRazaoSocial>
                 <p>{company.fantasia}</p>
