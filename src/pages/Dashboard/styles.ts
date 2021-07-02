@@ -62,7 +62,7 @@ export const Form = styled.form<formProps>`
     @media (max-width: 767px) {
       font-size: 14px;
       height: 45px;
-      width: 210px;
+      width: 200px;
     }
 
     ${(props) =>
@@ -138,10 +138,6 @@ export const CardInformation = styled.div`
   margin: 10px;
   height: 315px;
   justify-content: space-between;
-
-  &:hover {
-    transform: translateY(5px);
-  }
 
   p {
     font-size: 16px;

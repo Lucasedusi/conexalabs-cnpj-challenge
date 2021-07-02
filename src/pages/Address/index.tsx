@@ -69,7 +69,6 @@ function Address({ company }: MapProps) {
           zoom={[18]}
         >
           <Container>
-            <CardInformation>
               <Link to="/">
                 <FaArrowLeft
                   style={{ border: '1px solid #3a8970', borderRadius: '50%', padding: 5 }}
@@ -77,6 +76,7 @@ function Address({ company }: MapProps) {
                   size={30}
                 />
               </Link>
+            <CardInformation>
               <InfoRazaoSocial>
                 <p>{company.fantasia}</p>
                 <span>Razão Social</span>
