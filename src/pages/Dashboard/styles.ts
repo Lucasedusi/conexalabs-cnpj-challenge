@@ -188,11 +188,6 @@ export const Empty = styled.div`
   align-items: center;
   flex-direction: column;
 
-  /* @media (max-width: 767px) {
-    font-size: 25px;
-    margin-left: 12px;
-  } */
-
   span {
     margin-top: 10px;
     font-weight: 300;

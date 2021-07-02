@@ -1,19 +1,19 @@
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  @media (max-width: 767px) {
+    position: absolute;
+    margin: 15px;
+  }
+`;
 
 export const CardInformation = styled.div`
-  position: absolute;
-  margin: 20px;
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  padding: 22px 20px;
-  background: #fff;
-  border-radius: 10px;
-  transition: transform 0.2s;
-  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.09);
+  
+
+  @media (max-width: 767px) {
+    display: none;
+  }
 
   &:hover {
     transform: translateY(5px);
@@ -25,12 +25,20 @@ export const CardInformation = styled.div`
     font-weight: 600;
     margin-bottom: 4px;
     text-transform: capitalize;
+
+    @media (max-width: 767px) {
+      font-size: 14px;
+    }
   }
 
   span {
     font-size: 15px;
     color: ${colors.textCard};
     font-weight: 400;
+
+    @media (max-width: 767px) {
+      font-size: 13px;
+    }
   }
 `;
 
