@@ -1,3 +1,4 @@
+/* eslint-disable import/no-webpack-loader-syntax */
 /* eslint-disable react/style-prop-object */
 import { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
@@ -14,6 +15,8 @@ import { FaMapMarkerAlt, FaArrowLeft } from 'react-icons/fa';
 import { Container, CardInformation, InfoRazaoSocial, InfoCNPJ, InfoEndereco } from './styles';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
+
+import '!mapbox-gl';
 
 interface MapProps {
   company: ICompany;
