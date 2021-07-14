@@ -60,8 +60,10 @@
     ]
   },
   "devDependencies": {
+    "@types/mapbox-gl": "^2.3.3",
     "@types/react-lottie": "^1.2.5",
     "@types/react-router-dom": "^5.1.7",
-    "@types/styled-components": "^5.1.10"
+    "@types/styled-components": "^5.1.10",
+    "worker-loader": "^3.0.8"
   }
 }

@@ -28,8 +28,10 @@
     "fortawesome",
     "lido",
     "logradouro",
+    "mapboxgl",
     "meros",
     "municipio",
-    "o"
+    "o",
+    "sweetalert"
   ]
 }
