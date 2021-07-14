@@ -16,7 +16,7 @@ import { Container, CardInformation, InfoRazaoSocial, InfoCNPJ, InfoEndereco } f
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-import '!mapbox-gl';
+import '!mapbox-gl/dist/mapbox-gl';
 
 interface MapProps {
   company: ICompany;
