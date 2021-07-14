@@ -27,7 +27,7 @@ function Address({ company }: MapProps) {
   let history = useHistory();
 
   const Map = ReactMapboxGl({
-    accessToken: 'pk.eyJ1IjoibHVjYXNlZHVzaSIsImEiOiJja3Fqa3E0dTAwMW4xMnBsdnc5azV6Mm5jIn0.dZcBSzHCj_u3J3nzHoFo3g',
+    accessToken: 'pk.eyJ1IjoibHVjYXNlZHVzaSIsImEiOiJja3IzbGdsbjYxd21wMnBvN3BtdmhyMWkwIn0.yv5kI-J5NEaKaohDoWHgQw',
   });
 
   useEffect(() => {
