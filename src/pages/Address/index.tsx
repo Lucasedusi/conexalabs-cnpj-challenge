@@ -1,22 +1,22 @@
 /* eslint-disable import/no-webpack-loader-syntax */
 /* eslint-disable react/style-prop-object */
+
 import { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import ReactMapboxGl, { Layer, Marker } from 'react-mapbox-gl';
-import localization from '../../services/localization';
+
 import { ICompany } from '../../interface/company';
 
-import swal from 'sweetalert';
+import ReactMapboxGl, { Layer, Marker } from 'react-mapbox-gl';
+import localization from '../../services/localization';
 
+import swal from 'sweetalert';
 import Spinner from '../../components/Spinner';
 
 import { FaMapMarkerAlt, FaArrowLeft } from 'react-icons/fa';
-
 import { Container, CardInformation, InfoRazaoSocial, InfoCNPJ, InfoEndereco } from './styles';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
-
-import '!mapbox-gl/dist/mapbox-gl';
+import '!mapbox-gl/dist/mapbox-gl'; // Foi necessário o uso do Prefixo de exclusão pois, estava havendo incompatibilidade de versões
 
 interface MapProps {
   company: ICompany;
@@ -29,6 +29,7 @@ function Address({ company }: MapProps) {
   const [loader, setLoader] = useState<boolean>(false);
   let history = useHistory();
 
+  // Chave de acesso gerada no MAPBOX GL JS
   const Map = ReactMapboxGl({
     accessToken: 'pk.eyJ1IjoibHVjYXNlZHVzaSIsImEiOiJja3IzbGdsbjYxd21wMnBvN3BtdmhyMWkwIn0.yv5kI-J5NEaKaohDoWHgQw',
   });
@@ -40,7 +41,7 @@ function Address({ company }: MapProps) {
         .get('/json', {
           params: {
             address: companyMap.logradouro + companyMap.fantasia + companyMap.municipio,
-            key: 'AIzaSyDdI14A2M5QynOpuYJm_qygWiqI4YlwwC4',
+            key: 'AIzaSyDdI14A2M5QynOpuYJm_qygWiqI4YlwwC4', // Chave gerado no Google Cloud
           },
         })
         .then((res) => {

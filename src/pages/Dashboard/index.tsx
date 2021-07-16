@@ -2,7 +2,10 @@
 import React, { useState, FormEvent, useEffect } from 'react';
 
 import api from '../../services/api';
+
 import { ICompany } from '../../interface/company';
+import { Link } from 'react-router-dom';
+import { FaBuilding, FaChevronRight } from 'react-icons/fa';
 
 import Lottie from 'react-lottie';
 import failedAnimation from '../../assets/Lotties/failedAnimation.json';
@@ -14,9 +17,7 @@ import 'react-multi-carousel/lib/styles.css';
 import Carousel from '../../components/Carousel/Carousel';
 import Spinner from '../../components/SpinnerDashboard';
 
-import { FaBuilding, FaChevronRight } from 'react-icons/fa';
 import {
-  Container,
   Header,
   Title,
   Form,
@@ -29,7 +30,6 @@ import {
   Empty,
   Error,
 } from './styles';
-import { Link } from 'react-router-dom';
 
 interface CnpjProps {
   dataOfCompany: (company: ICompany) => void;
@@ -94,6 +94,8 @@ function Dashboard({ dataOfCompany }: CnpjProps) {
     dataOfCompany(company);
   };
 
+
+  // Propriedade acerca das animations que é feita pela biblioteca Lottie
   const cnpjAnimation = {
     loop: 1,
     autoplay: true,
@@ -125,7 +127,7 @@ function Dashboard({ dataOfCompany }: CnpjProps) {
             value={newCnpj}
             onChange={(e: { target: { value: React.SetStateAction<string> } }, type: string) => {
               setNewCnpj(e.target.value);
-              setMask((type = 'CPF'));
+              setMask((type = 'CNPJ'));
             }}
           />
           <button type="submit">LOCALIZAR</button>
