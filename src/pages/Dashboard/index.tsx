@@ -9,10 +9,10 @@ import failedAnimation from '../../assets/Lotties/failedAnimation.json';
 import searchFile from '../../assets/Lotties/searchFile.json';
 import CpfCnpj from '@react-br-forms/cpf-cnpj-mask';
 
-// import Carousel from 'react-multi-carousel';
+import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-import Carousel from '../../components/Carousel/Carousel';
+// import Carousel from '../../components/Carousel/Carousel';
 
 import { FaBuilding, FaChevronRight } from 'react-icons/fa';
 import {
@@ -107,23 +107,23 @@ function Dashboard({ dataOfCompany }: CnpjProps) {
     },
   };
 
-  // const responsive = {
-  //   desktop: {
-  //     breakpoint: { max: 3000, min: 1024 },
-  //     items: 4,
-  //     slidesToSlide: 3,
-  //   },
-  //   tablet: {
-  //     breakpoint: { max: 1024, min: 464 },
-  //     items: 2,
-  //     slidesToSlide: 2,
-  //   },
-  //   mobile: {
-  //     breakpoint: { max: 767, min: 0 },
-  //     items: 1,
-  //     slidesToSlide: 1,
-  //   },
-  // };
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4,
+      slidesToSlide: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 2,
+    },
+    mobile: {
+      breakpoint: { max: 767, min: 0 },
+      items: 1,
+      slidesToSlide: 1,
+    },
+  };
 
   return (
     <>
@@ -153,7 +153,7 @@ function Dashboard({ dataOfCompany }: CnpjProps) {
 
       <Body>
         {searchCnpj.length > 0 ? (
-          <Carousel show={4} >
+          <Carousel responsive={responsive}>
             {searchCnpj.map((item) => (
               <>
                 <Link to="/address" key={item.cnpj} onClick={() => handleClickAddress(item)}>
