@@ -1,3 +1,5 @@
+// Dados tipados que serão utilizados nas respctivas chamadas à API
+
 export interface ICompany {
   endereco: string;
   fantasia: string;

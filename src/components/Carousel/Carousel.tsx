@@ -1,3 +1,7 @@
+// Componente de Carousel para listagem das empresas buscadas
+// Obs (Component de Terceiros)
+
+
 import React, { Children } from 'react'
 import './Carousel.scss'
 
