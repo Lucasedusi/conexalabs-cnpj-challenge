@@ -90,7 +90,7 @@ function Address({ company }: MapProps) {
                 <span>CNPJ</span>
               </InfoCNPJ>
               <InfoEndereco>
-                <p>{`${company.logradouro}, ${company.bairro} - ${company.municipio}, ${company.uf}`}</p>
+              <p>{`${company.logradouro}, ${company.numero} - ${company.bairro} - ${company.municipio}, ${company.uf}`}</p>
                 <span>Endereço</span>
               </InfoEndereco>
             </CardInformation>
