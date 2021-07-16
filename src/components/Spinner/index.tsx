@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/no-redeclare */
+// Componente de carregamento enquanto é feita a renderização do Mapa
+
 import React from 'react';
 import { Loading, TextLoading, LoadingIcon } from './styles';
 

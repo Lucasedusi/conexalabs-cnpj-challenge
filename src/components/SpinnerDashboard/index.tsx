@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/no-redeclare */
+// Componente de carregamento enquanto é feita a requisição à API
+
 import React from 'react';
 import { Loading, TextLoading, LoadingIcon } from './styles';
 
