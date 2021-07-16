@@ -7,10 +7,6 @@ interface formProps {
   hasError?: boolean;
 }
 
-export const Container = styled.div`
-  /* padding: 40px 0; */
-`;
-
 export const Header = styled.div`
   display: flex;
   justify-content: center;

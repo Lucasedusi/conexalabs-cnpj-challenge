@@ -22,6 +22,7 @@ const Routes: React.FC = () => {
     status: '',
   });
 
+  // Função para passagem dos dados do Dashboard para a tela do Mapa
   const businessDate = (businessDate: ICompany) => {
     setCompany(businessDate);
   };

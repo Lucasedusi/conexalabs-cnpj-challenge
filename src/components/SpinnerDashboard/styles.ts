@@ -11,7 +11,7 @@ export const Loading = styled.div`
 
 export const TextLoading = styled.div`
   font-size: 20px;
-  color: #fff;
+  color: ${colors.textPrimary};
   margin-left: 10px;
   margin-top: 20px;
 `;
