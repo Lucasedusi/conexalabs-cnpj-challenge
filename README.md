@@ -18,7 +18,7 @@ Este comando executará a aplicação em modo de desenvolvimento.
 Abra [http://localhost:3000](http://localhost:3000) para visualizá-lo no navegador.
 
 
-## Link para projeto Online.
+## Link para projeto online.
 
 Clique [https://conexalabs-cnpj-challenge.netlify.app/](https://conexalabs-cnpj-challenge.netlify.app/)
 
