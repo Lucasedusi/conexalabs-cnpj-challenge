@@ -12,6 +12,7 @@ import CpfCnpj from '@react-br-forms/cpf-cnpj-mask';
 import 'react-multi-carousel/lib/styles.css';
 
 import Carousel from '../../components/Carousel/Carousel';
+import Spinner from '../../components/SpinnerDashboard';
 
 import { FaBuilding, FaChevronRight } from 'react-icons/fa';
 import {
@@ -38,6 +39,7 @@ function Dashboard({ dataOfCompany }: CnpjProps) {
   const [newCnpj, setNewCnpj] = useState('');
   const [inputError, setInputError] = useState('');
   const [mask, setMask] = useState('');
+  const [loader, setLoader] = useState<boolean>(false);
   const [searchCnpj, setSearchCnpj] = useState<ICompany[]>(() => {
     const storageCNPJ = localStorage.getItem('@Conexa:cnpj');
 
@@ -66,21 +68,25 @@ function Dashboard({ dataOfCompany }: CnpjProps) {
     }
 
     try {
+      setLoader(true);
       const response = await api.get<ICompany>(`v1/cnpj/${newCnpj.replace(/\D+/g, '')}`);
 
       const findCnpj = response.data;
 
       if (response.data.status === 'ERROR') {
         setInputError(response.data.message);
+        setLoader(false);
         return;
       }
 
       setSearchCnpj([...searchCnpj, findCnpj]);
       setNewCnpj('');
       setInputError('');
+      setLoader(false);
     } catch (err) {
       setInputError('CNPJ Inválido');
       setNewCnpj('');
+      setLoader(false);
     }
   }
 
@@ -133,7 +139,9 @@ function Dashboard({ dataOfCompany }: CnpjProps) {
       </Header>
 
       <Body>
-        {searchCnpj.length > 0 ? (
+        {loader ? (
+          <Spinner />
+        ) : searchCnpj.length > 0 ? (
           <Carousel show={4}>
             {searchCnpj.map((item) => (
               <>

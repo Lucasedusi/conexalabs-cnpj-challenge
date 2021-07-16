@@ -2,13 +2,13 @@
 import React from 'react';
 import { Loading, TextLoading, LoadingIcon } from './styles';
 
-const Spinner: React.FC = () => {
+const SpinnerDashboard: React.FC = () => {
   return (
     <Loading>
       <LoadingIcon hidden={false} />
-      <TextLoading>Buscando Endereço</TextLoading>
+      <TextLoading>Buscando Empresa</TextLoading>
     </Loading>
   );
 };
 
-export default Spinner;
+export default SpinnerDashboard;

@@ -3,15 +3,17 @@ import colors from '../../styles/colors';
 
 export const Loading = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   height: 100vh;
   justify-content: center;
+  margin-top: 100px;
 `;
 
 export const TextLoading = styled.div`
   font-size: 20px;
   color: #fff;
   margin-left: 10px;
+  margin-top: 20px;
 `;
 
 export const LoadingIcon = styled.div`
