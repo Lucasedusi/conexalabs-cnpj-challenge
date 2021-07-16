@@ -20,7 +20,8 @@ export const Container = styled.div`
   @media (max-width: 767px) {
     margin: 10px;
     width: 55px;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 5px;
     justify-content: center;
     align-items: center;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.09);

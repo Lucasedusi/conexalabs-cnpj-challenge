@@ -158,7 +158,7 @@ function Dashboard({ dataOfCompany }: CnpjProps) {
                       <span>CNPJ</span>
                     </InfoCNPJ>
                     <InfoEndereco>
-                      <p>{`${item.logradouro}, ${item.bairro} - ${item.municipio}, ${item.uf}`}</p>
+                      <p>{`${item.logradouro}, ${item.numero} - ${item.bairro} - ${item.municipio}, ${item.uf}`}</p>
                       <span>Endereço</span>
                     </InfoEndereco>
                     <Footer>
