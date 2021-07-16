@@ -1,15 +1,26 @@
-# Getting Started with Create React App
+# CONEXALABS-CNPJ-CHALLENGE
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este documento descreve os passos para execução local deste projeto.
 
-## Available Scripts
+Necessário que faça o git clone do projeto e execute em sua máquina
 
-In the project directory, you can run:
+## Navegue até o diretório do projeto.
+
+No diretório do projeto, execute:
+
+### `yarn install`
+
+Este comanda fará a instalação de todas as dependências do projeto. Em seguida execute:
 
 ### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Este comando executará a aplicação em modo de desenvolvimento.
+Abra [http://localhost:3000](http://localhost:3000) para visualizá-lo no navegador.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+
+### `Uso da Ferramenta`
+
+ - No campo de texto digite um CNPJ válido.
+ - Em seguida aparecerá uma BOX com os dados referentes a empresa buscada, clique sobre a Box.
+ - Em seguida será redirecionado para o mapa mostrando a localização da empresa referente ao CNPJ.
+ - Nesta interface há um botão voltar, onde será redicionado para a interface onde estão listados as empresas.
