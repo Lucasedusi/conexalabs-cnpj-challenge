@@ -31,7 +31,7 @@ function Address({ company }: MapProps) {
 
   // Chave de acesso gerada no MAPBOX GL JS
   const Map = ReactMapboxGl({
-    accessToken: 'pk.eyJ1IjoibHVjYXNlZHVzaSIsImEiOiJja3IzbGdsbjYxd21wMnBvN3BtdmhyMWkwIn0.yv5kI-J5NEaKaohDoWHgQw',
+    accessToken: `${process.env.REACT_APP_MAPBOX_KEY}`,
   });
 
   useEffect(() => {
@@ -90,7 +90,7 @@ function Address({ company }: MapProps) {
                 <span>CNPJ</span>
               </InfoCNPJ>
               <InfoEndereco>
-              <p>{`${company.logradouro}, ${company.numero} - ${company.bairro} - ${company.municipio}, ${company.uf}`}</p>
+                <p>{`${company.logradouro}, ${company.numero} - ${company.bairro} - ${company.municipio}, ${company.uf}`}</p>
                 <span>Endereço</span>
               </InfoEndereco>
             </CardInformation>
