@@ -31,7 +31,7 @@ function Address({ company }: MapProps) {
 
   // Chave de acesso gerada no MAPBOX GL JS
   const Map = ReactMapboxGl({
-    accessToken: `${process.env.REACT_APP_MAPBOX_KEY}`,
+    accessToken: 'pk.eyJ1IjoibHVjYXNlZHVzaSIsImEiOiJja3IzbGdsbjYxd21wMnBvN3BtdmhyMWkwIn0.yv5kI-J5NEaKaohDoWHgQw',
   });
 
   useEffect(() => {
@@ -48,8 +48,9 @@ function Address({ company }: MapProps) {
           setLat(res.data.results[0].geometry.location.lat);
           setLng(res.data.results[0].geometry.location.lng);
         })
+
         .catch(() => {
-          swal('Falha!', 'Endereço não encontrado!', 'error');
+          swal('Falhei!', 'Endereço não encontrado!', 'error');
           history.push('/');
         })
         .finally(() => {
